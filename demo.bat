@@ -7,41 +7,26 @@ mode 40,20
 goto setup
 :setup
 set model=demo_model
-set cx=3
-set cy=3
+set cx=7
+set cy=7
 set turn=1
-set render=4
+set render=6
 set floor=--
 set sky=..
 set wmax=1
 set w1f=##
 set w1s=@@
-set m1m1=1
-set m2m1=1
-set m3m1=1
-set m4m1=1
-set m5m1=1
-set m1m2=1
-set m2m2=n
-set m3m2=n
-set m4m2=n
-set m5m2=1
-set m1m3=1
-set m2m3=n
-set m3m3=n
-set m4m3=n
-set m5m3=1
-set m1m4=1
-set m2m4=n
-set m3m4=n
-set m4m4=n
-set m5m4=1
-set m1m5=1
-set m2m5=1
-set m3m5=1
-set m4m5=1
-set m5m5=1
-goto main
+set x=0
+set y=1
+:fill
+set /a x+=1
+set m%x%m%y%=n
+if %x% == 1 set m%x%m%y%=1
+if %x% == 15 set m%x%m%y%=1&set /a y+=1&set x=0
+if %y% == 1 set m%x%m%y%=1
+if %y% == 15 set m%x%m%y%=1
+if %y% == 16 goto main
+goto fill
 :main
 call "Shade_Engine.bat"
 echo W, S to move. A, D to turn.

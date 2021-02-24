@@ -13,7 +13,6 @@ if "%model%"=="" set model=n
 goto rayset
 :rayset
 set ray=0
-set grender=%render%
 set return=n
 set add=-1
 goto newray
@@ -35,17 +34,17 @@ if "%turn%"=="3" set hit=f
 if "%turn%"=="4" set hit=s
 set rayh=f
 set maincast=y
+if "%rayadd%"=="%render%" set return=y
 goto raycast%rayh%
 :hitcheck
 set findw=!m%rx%m%ry%!
-if "%findw%"=="n" set maincast=n&goto raycast%rayh%
 if %rayadd% gtr %render% (
-set maincast=n
 set r%ray%block=%floor%
 set r%ray%add=14
-if "%return%"=="n" if "%maincast%"=="y" set return=y
+set maincast=n
 goto newray
 )
+if "%findw%"=="n" set maincast=n&goto raycast%rayh%
 if "%findw%"=="%wmax%" (
 set r%ray%block=!w%findw%%hit%!
 set r%ray%add=%rayadd%
