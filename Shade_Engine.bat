@@ -106,7 +106,10 @@ set /a screenxmax=%screenx%+1
 if %dray% lss %ray% set /a screenx+=%xspace%
 if "%dray%"=="%ray%" set screenx=16
 set screeny=9
-set /a yspace=14/!r%dray%add!
+::set /a yspace=14/!r%dray%add!
+
+set /a yspace=16-2*!r%dray%add!
+
 set flipup=0
 set screenadd=1
 set tex=!r%dray%block!
